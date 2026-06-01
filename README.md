@@ -1,30 +1,36 @@
-# Introduction
+# STM32 Memory Loaders
 
-This repository contains the Flashloaders source code of external memories embedded in STM32 HW boards.
-* The branch **master** provides the Flashloaders projects and source files as it's integrated in STM32CubeProgrammer tool.
-* The branch **contrib** helps you to integrate the external memory to your Embedded system driven by STM32.
+## Overview
 
+This repository contains STM32 flashloader source code for both external and internal memories used on STM32 hardware boards.
+The **master** branch provides the flashloader projects and source files integrated with STM32CubeProgrammer.
 
-# External memories
+## External memories
 
-External memories are available on many STM32 HW board like the evaluation and discovery boards. It can be a Flash or SRAM and it provides higher storage capabilities. The STM32 boards supports many types of external memories such us Micron, Winbond that are connected to the mcu through different interfaces like FMC, SPI..
+External memories are available on many STM32 hardware boards such as evaluation and discovery kits. They can be Flash or SRAM and provide higher storage capabilities. STM32 boards support many types of external memories from vendors such as Micron and Winbond, connected through interfaces like FMC and SPI.
 
+## Internal memories
 
-# Package structure
+Internal memories are embedded inside STM32 MCUs (such as on-chip Flash and SRAM).
 
-The flashloader project is built with EWARM or MDK-ARM IDE and comes with the corresponding source, header and linker files:
+## External memory loaders
 
-* Library : source/headers files providing required drivers to manage read, write erase functionalities of the supported memory that are required to implement the initialization, erase and write functions needed by the flashloader.
+External memory loaders are located in `external_memory_loaders/` and are organized by STM32 series and board.
 
-* Loader  : source/headers files containing specific information related to the supported memory (name, size…) and functions required by the flashloader
+Each external flashloader project is built with EWARM or MDK-ARM IDE and comes with the corresponding source, header, and linker files:
 
-* Project : contains a preconfigured project with the associated linker file
+* Library: source/header files providing required drivers to manage read, write, and erase functionalities of the supported memory, needed to implement initialization, erase, and write functions.
+* Loader: source/header files containing specific information related to the supported memory (name, size, and related functions).
+* Project: a preconfigured project with the associated linker file.
 
+### How to adapt an external flashloader project for a customized board
 
-# How to adapt the flashloader project for a customized board
+The required steps to build a customized external loader for STM32CubeProgrammer are available at this [link](https://www.st.com/content/ccc/resource/technical/document/user_manual/e6/10/d8/80/d6/1d/4a/f2/CD00262073.pdf/files/CD00262073.pdf/jcr:content/translations/en.CD00262073.pdf) (Section 3.9).
 
-The required steps to build a customized loader for cube programmer are vailable at this [link](https://www.st.com/content/ccc/resource/technical/document/user_manual/e6/10/d8/80/d6/1d/4a/f2/CD00262073.pdf/files/CD00262073.pdf/jcr:content/translations/en.CD00262073.pdf) (Section 3.9).
+## Internal memory loaders
 
-# Contribution
+Internal memory loaders are located in `internal_memory_loaders/`.
 
-We propose and accept contribution from community for new loaders and drivers only on **contrib** branch. This branch, **master**, includes original external loaders for STM32 development boards.
+## Feedback and contributions
+
+Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
